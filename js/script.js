@@ -1,23 +1,42 @@
 
 $(document).ready(function(){
   
- 
-  function load_question()
-  {
-    var str ="";
-    var xhr=new XMLHttpRequest();
-    xhr.open("GET","https://raw.githubusercontent.com/haiha262/PTE_READING/master/RW_1.txt");
-    xhr.onload=function(){
-      str = (xhr.responseText);
-    };
-    xhr.send();
-    return str;
-  }
-    $("button").click(function(){
+ var question= 0;
 
-     
-     var str = load_question();
-        while(str.indexOf("(")>0)
+    
+    
+    function getAnswer(str) {
+      var start = str.search("Answer");
+      var end = str.lastIndexOf("");
+      var content = str.substring(start, end);
+      document.getElementById("answer").innerHTML = content;
+    }
+
+function AddAnswerButton() {
+    if ($("#showAnswer").length > 0){
+    return;
+    }
+    var btn = document.createElement("BUTTON");
+    var name = document.createTextNode("Show Answer");
+    btn.appendChild(name);
+    document.body.appendChild(btn);
+    btn.setAttribute("id","showAnswer");
+
+    $("#showAnswer").click(function() {
+      var x = document.getElementById("answer");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+    }) ;
+  }   
+
+function question_process(str)
+{
+  getAnswer(str);
+  AddAnswerButton();
+  while(str.indexOf("(")>0)
         {
           var start = str.indexOf("(");
           var end = str.indexOf(")");
@@ -33,10 +52,26 @@ $(document).ready(function(){
           str = str.replace(need_replace, replace); 
         }
         document.getElementById("div1").innerHTML = str;
+}
+    $("button").click(function(){
+
+      var str ="";
+      var xhr=new XMLHttpRequest();
+      var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/b3cbb37c34a4fc82172e1da75b0295e4613baf9f/RW_"+(question+1)+".txt";
+      xhr.open("GET",link);
+      xhr.onload=function(){
+      str = (xhr.responseText);
+      question_process (str);
+      };
+      xhr.send();
+        
+        
     });
 
   
  
-        
-   
+  
+  
+
+  
 });
