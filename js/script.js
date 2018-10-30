@@ -57,7 +57,7 @@ function question_process(str)
 
       var str ="";
       var xhr=new XMLHttpRequest();
-      var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/b3cbb37c34a4fc82172e1da75b0295e4613baf9f/RW_"+(question+1)+".txt";
+      var link = "./data/RW_"+(question+1)+".txt";
       xhr.open("GET",link);
       xhr.onload=function(){
       str = (xhr.responseText);
@@ -65,6 +65,7 @@ function question_process(str)
       };
       xhr.send();
         
+
         
     });
 
