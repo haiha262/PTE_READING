@@ -14,7 +14,7 @@ $(document).ready(function(){
 
 function AddAnswerButton() {
     if ($("#showAnswer").length > 0){
-    return;
+    $("#showAnswer").remove();
     }
     var btn = document.createElement("BUTTON");
     var name = document.createTextNode("Show Answer");
@@ -53,15 +53,31 @@ function question_process(str)
         }
         document.getElementById("div1").innerHTML = str;
 }
-    $("button").click(function(){
+
+
+    $("#start").click(function(){
 
       var str ="";
+      document.getElementById("answer");
+
       var xhr=new XMLHttpRequest();
-      var link = "./data/RW_"+(question+1)+".txt";
+      var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/master/data/RW_"+(++question)+".txt";
       xhr.open("GET",link);
       xhr.onload=function(){
-      str = (xhr.responseText);
-      question_process (str);
+        var text = xhr.responseText;
+        if (text.search("404") !=-1)
+        {
+          question = 0;
+          document.getElementById("div1").innerHTML = "Start Again";
+          document.getElementById("start").innerHTML = "Start Again";
+          $("#showAnswer").remove();
+        }
+        else
+        {
+          str = text;
+          document.getElementById("start").innerHTML = "Next";
+          question_process (str);
+        }
       };
       xhr.send();
         
