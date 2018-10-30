@@ -10,6 +10,8 @@ $(document).ready(function(){
       var end = str.lastIndexOf("");
       var content = str.substring(start, end);
       document.getElementById("answer").innerHTML = content;
+      return str.replace(content, ""); 
+
     }
 
 function AddAnswerButton() {
@@ -34,7 +36,7 @@ function AddAnswerButton() {
 
 function question_process(str)
 {
-  getAnswer(str);
+  str = getAnswer(str);
   AddAnswerButton();
   while(str.indexOf("(")>0)
         {
