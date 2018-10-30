@@ -59,7 +59,7 @@ function question_process(str)
 
       var str ="";
       document.getElementById("answer");
-
+    document.getElementById("answer").style.display = "none";;
       var xhr=new XMLHttpRequest();
       var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/master/data/RW_"+(++question)+".txt";
       xhr.open("GET",link);
