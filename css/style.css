@@ -6,6 +6,9 @@ font-family: "Open Sans", Arial, sans-serif;
     /* font-weight: 500; */
     padding: 10px 40px 10px 40px;
     line-height: 2;
+            color: whitesmoke;
+    padding: 10px 40px 10px 40px;
+    background-color: #5f5f5f;
 }
 button {
     float: right;
@@ -60,3 +63,8 @@ li
     float: left;
         display: inline;
 }
+a:hover {
+    background-color: yellow;
+}
+#page_number {position: absolute;
+    bottom: 31px;}
