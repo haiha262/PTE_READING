@@ -6,7 +6,8 @@ font-family: "Open Sans", Arial, sans-serif;
     /* font-weight: 500; */
     padding: 10px 40px 10px 40px;
     line-height: 2;
-            color: whitesmoke;
+
+        color: whitesmoke;
     padding: 10px 40px 10px 40px;
     background-color: #5f5f5f;
 }
@@ -46,7 +47,7 @@ select
     font-size: 11px;
     font-family: Arial;
 }
-
+  #page_number li{  background-color: #5f5f5f;}
 #page_number a {
     padding: 3px;
     padding-left: 5px;
@@ -63,8 +64,9 @@ li
     float: left;
         display: inline;
 }
-a:hover {
+#page_number a:hover {
     background-color: yellow;
 }
-#page_number {position: absolute;
-    bottom: 31px;}
+#page_number a:active {
+    background-color: red;
+}
