@@ -24,8 +24,9 @@ function AddAnswerButton() {
     }
     var btn = document.createElement("BUTTON");
     var name = document.createTextNode("Show Answer");
+    var listbtn =  document.getElementById("list_button");
     btn.appendChild(name);
-    document.body.appendChild(btn);
+    listbtn.appendChild(btn);
     btn.setAttribute("id","showAnswer");
 
     $("#showAnswer").click(function() {
@@ -69,7 +70,8 @@ function nextQuestion(question)
       if (useXHR)
       {
         var xhr=new XMLHttpRequest();
-        var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/master/data/RW_"+(question)+".txt";
+        // var link = "https://raw.githubusercontent.com/haiha262/PTE_READING/master/data/RW_"+(question)+".txt";
+        var link = "./data/RW_"+(question)+".txt";
         xhr.open("GET",link);
         xhr.onload=function(){
           var text = xhr.responseText;
@@ -129,7 +131,12 @@ function listPage()
  
     var li_tag = document.createElement("li");
     var a_tag = document.createElement("a");
-    var name = document.createTextNode(i);
+    var cur_page = "";
+    if (i<10)
+      cur_page = "0"+ i;
+    else
+cur_page =  i;
+    var name = document.createTextNode(cur_page);
     a_tag.appendChild(name);
     clickEvent(a_tag,i);
     li_tag.appendChild(a_tag);
